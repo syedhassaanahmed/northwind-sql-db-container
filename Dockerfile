@@ -1,5 +1,4 @@
-ARG SQL_SERVER_VERSION=2022
-FROM mcr.microsoft.com/mssql/server:${SQL_SERVER_VERSION}-latest
+FROM mcr.microsoft.com/mssql/server:2022-latest
 
 ARG MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>
 
