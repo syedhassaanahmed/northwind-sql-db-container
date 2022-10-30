@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -uo pipefail
 
 #do this in a loop because the timing for when the SQL instance is ready is indeterminate
 for i in {1..50};
