@@ -6,8 +6,8 @@ ENV ACCEPT_EULA=Y
 ENV MSSQL_SA_PASSWORD=$MSSQL_SA_PASSWORD
 
 WORKDIR /northwind
-ADD --chown=mssql https://raw.githubusercontent.com/microsoft/sql-server-samples/master/samples/databases/northwind-pubs/instnwnd.sql ./
-COPY --chown=mssql ./init-db.sh ./
+ADD --chown=mssql:root https://raw.githubusercontent.com/microsoft/sql-server-samples/master/samples/databases/northwind-pubs/instnwnd.sql ./
+COPY --chown=mssql:root ./init-db.sh ./
 
 RUN chmod +x ./init-db.sh
 
