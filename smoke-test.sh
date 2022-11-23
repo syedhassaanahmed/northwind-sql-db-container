@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -uo pipefail
+set -euo pipefail
 
 IMAGE_NAME=nwndsqldbimg-smoketest
 CONTAINER_NAME=nwndsqldbcont-smoketest
@@ -24,9 +24,9 @@ do
     SQL_CMD="/opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P \"$MSSQL_SA_PASSWORD\" -d \"$DB_NAME\" -h -1 -Q \
         \"SET NOCOUNT ON; SELECT COUNT(1) FROM $TABLE_NAME\" | xargs"
 
-    ROW_COUNT=$(docker exec $CONTAINER_NAME bash -c "$SQL_CMD")
+    ROW_COUNT=$(docker exec $CONTAINER_NAME bash -c "$SQL_CMD" || true)
 
-    if [[ $? -eq 0 && $ROW_COUNT =~ ^[0-9]+$ && $ROW_COUNT -ge 1 ]];
+    if [[ $ROW_COUNT =~ ^[0-9]+$ && $ROW_COUNT -ge 1 ]];
     then
         echo "$TABLE_NAME row count is $ROW_COUNT"
         echo "$DB_NAME DB initialization successful"
