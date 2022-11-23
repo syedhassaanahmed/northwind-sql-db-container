@@ -2,7 +2,7 @@
 set -uo pipefail
 
 #do this in a loop because the timing for when the SQL instance is ready is indeterminate
-for i in {1..50};
+for i in {1..60};
 do
     /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P "$MSSQL_SA_PASSWORD" 
     if [ $? -eq 0 ]

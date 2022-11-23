@@ -19,3 +19,4 @@ docker build . \
 - Check logs if the container successfully started `docker logs nwndsqldbcont`
 - Connect to the SQL Server using Management Studio/Azure Data Studio.
 - Verify that the new database `Northwind` exists with the correct tables.
+- If you'd like to automate the verification of database and table creation, you can execute the script `smoke-test.sh`. 
