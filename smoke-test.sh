@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-IMAGE_NAME=nwndsqldbimg-smoketest
-CONTAINER_NAME=nwndsqldbcont-smoketest
+IMAGE_NAME="nwndsqldbimg-smoketest"
+CONTAINER_NAME="nwndsqldbcont-smoketest"
 MSSQL_SA_PASSWORD="<YourStrong!Passw0rd>"
 
 echo "Stopping and removing container $CONTAINER_NAME if already exists"
