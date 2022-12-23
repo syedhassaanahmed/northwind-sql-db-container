@@ -25,14 +25,13 @@ do
         \"SET NOCOUNT ON; SELECT COUNT(1) FROM $TABLE_NAME\" | xargs"
 
     ROW_COUNT=$(docker exec $CONTAINER_NAME bash -c "$SQL_CMD" || true)
+    echo "$TABLE_NAME row count is $ROW_COUNT"
 
     if [[ $ROW_COUNT =~ ^[0-9]+$ && $ROW_COUNT -ge 1 ]];
     then
-        echo "$TABLE_NAME row count is $ROW_COUNT"
         echo "$DB_NAME DB initialization successful"
         break
     else
-        echo "$TABLE_NAME row count is $ROW_COUNT"
         echo "Waiting for $DB_NAME DB initialization. Attempt $i out of $RETRIES..."
         if [ $i = $RETRIES ];
         then
