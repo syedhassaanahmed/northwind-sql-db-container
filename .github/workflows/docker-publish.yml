@@ -2,9 +2,11 @@ name: Docker
 
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - main
   pull_request:
-    branches: [ "main" ]
+    paths-ignore:
+      - 'README.md'
 
 env:
   REGISTRY: ghcr.io
