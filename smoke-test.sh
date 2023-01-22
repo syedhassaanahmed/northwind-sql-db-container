@@ -37,6 +37,7 @@ do
         then
             echo "All retries ($RETRIES) exhausted"
             docker logs $CONTAINER_NAME
+            docker rm -f $CONTAINER_NAME
             exit 1
         else
             sleep 1
@@ -46,4 +47,4 @@ done
 
 echo "Smoke test succeeded"
 echo "Cleaning up container $CONTAINER_NAME"
-docker stop $CONTAINER_NAME && docker rm $CONTAINER_NAME
+docker rm -f $CONTAINER_NAME
